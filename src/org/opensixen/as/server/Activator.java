@@ -4,6 +4,7 @@ import java.util.Hashtable;
 
 
 import org.compiere.Adempiere;
+import org.compiere.server.AdempiereServerMgr;
 import org.opensixen.osgi.interfaces.IApplicationServer;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -35,6 +36,15 @@ public class Activator implements BundleActivator {
         
         if (!Adempiere.startup(false))
 			throw new RuntimeException("Opensixen Application Server could not start");
+        
+        // Start all services
+        AdempiereServerMgr serverMgr = AdempiereServerMgr.get();
+        serverMgr.startAll();
+        
+        // Setup Env
+        Adempiere.startupEnvironment(false);
+        
+        
         
 	}
 
