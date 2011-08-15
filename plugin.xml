@@ -14,4 +14,16 @@
       </application>
    </extension>
 
+ <extension
+         id="OpensixenServer"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.opensixen.as.server.ApplicationServer"
+            name="Opensixen Server">
+         <property
+               name="appName"
+               value="Opensixen Server">
+         </property>
+      </product>
+   </extension>
 </plugin>
